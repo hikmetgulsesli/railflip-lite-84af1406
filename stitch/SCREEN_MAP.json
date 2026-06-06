@@ -1,0 +1,38 @@
+[
+  {
+    "screenId": "38cad7238b4d488abc7cc28894cf882c",
+    "name": "Gameplay - RailFlip Lite (Animated)",
+    "type": "game",
+    "description": "Gameplay - RailFlip Lite (Animated) screen",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "34c86019d36b450f9361b1dbcd3854aa",
+    "name": "Gameplay - RailFlip Lite",
+    "type": "game",
+    "description": "Gameplay - RailFlip Lite screen",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "a65ab28e628a4feca7e27f7616cd72b0",
+    "name": "Game Settings - RailFlip Lite",
+    "type": "settings",
+    "description": "Game Settings - RailFlip Lite screen",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  },
+  {
+    "screenId": "b853844ca1cd4ec293c7556c36edf4f0",
+    "name": "Game Settings - RailFlip Lite (Enhanced)",
+    "type": "settings",
+    "description": "Game Settings - RailFlip Lite (Enhanced) screen",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  }
+]

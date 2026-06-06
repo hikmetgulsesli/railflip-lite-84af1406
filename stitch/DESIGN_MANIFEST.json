@@ -1,0 +1,46 @@
+[
+  {
+    "screenId": "38cad7238b4d488abc7cc28894cf882c",
+    "title": "Gameplay - RailFlip Lite (Animated)",
+    "htmlFile": "38cad7238b4d488abc7cc28894cf882c.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzljMjkwMTY5YjJkZTQ2OWQ4NGFlNDkyMjI3MGIwZDQ4EgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhM3MDMyNDE4MTQ0NDczOTY1MDA5&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/railflip-lite-84af1406/stitch/38cad7238b4d488abc7cc28894cf882c.html",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "34c86019d36b450f9361b1dbcd3854aa",
+    "title": "Gameplay - RailFlip Lite",
+    "htmlFile": "34c86019d36b450f9361b1dbcd3854aa.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzUzZTI0ZTc1NDM4ZjRlMjRhNTE1YmJmMmRiZWY2ZTU4EgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhM3MDMyNDE4MTQ0NDczOTY1MDA5&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/railflip-lite-84af1406/stitch/34c86019d36b450f9361b1dbcd3854aa.html",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "a65ab28e628a4feca7e27f7616cd72b0",
+    "title": "Game Settings - RailFlip Lite",
+    "htmlFile": "a65ab28e628a4feca7e27f7616cd72b0.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzM3MjVlOWNjMjEyNTRmYjRiNzBmZTNjNzQ4MGU2ZWE1EgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhM3MDMyNDE4MTQ0NDczOTY1MDA5&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/railflip-lite-84af1406/stitch/a65ab28e628a4feca7e27f7616cd72b0.html",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  },
+  {
+    "screenId": "b853844ca1cd4ec293c7556c36edf4f0",
+    "title": "Game Settings - RailFlip Lite (Enhanced)",
+    "htmlFile": "b853844ca1cd4ec293c7556c36edf4f0.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAyMmZlNjIxMGE0NzQ0MDFhZWQ5ZGE3ZjA5ODFiODgyEgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhM3MDMyNDE4MTQ0NDczOTY1MDA5&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/railflip-lite-84af1406/stitch/b853844ca1cd4ec293c7556c36edf4f0.html",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  }
+]

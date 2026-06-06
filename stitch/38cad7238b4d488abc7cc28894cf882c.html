@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RailFlip Lite - Gameplay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-secondary": "#5b005b",
+                        "on-primary-container": "#006a71",
+                        "outline-variant": "#3a494b",
+                        "on-primary-fixed": "#002022",
+                        "background": "#0d1515",
+                        "on-tertiary-fixed": "#001a42",
+                        "inverse-on-surface": "#2a3232",
+                        "on-secondary-fixed-variant": "#810081",
+                        "primary-container": "#00f2ff",
+                        "surface-container-low": "#151d1e",
+                        "secondary-fixed": "#ffd7f5",
+                        "primary-fixed": "#74f5ff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "primary": "#e1fdff",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004f54",
+                        "outline": "#849495",
+                        "on-secondary-fixed": "#380038",
+                        "surface-bright": "#333b3b",
+                        "inverse-primary": "#00696f",
+                        "on-primary": "#00363a",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface": "#0d1515",
+                        "surface-container-highest": "#2e3637",
+                        "surface-container-lowest": "#080f10",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-high": "#232b2c",
+                        "on-error": "#690005",
+                        "secondary-container": "#fe00fe",
+                        "surface-container": "#192122",
+                        "tertiary-container": "#cddbff",
+                        "inverse-surface": "#dce4e4",
+                        "secondary": "#ffabf3",
+                        "on-background": "#dce4e4",
+                        "surface-dim": "#0d1515",
+                        "tertiary": "#f7f7ff",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary-fixed-dim": "#ffabf3",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dce4e4",
+                        "on-tertiary-container": "#005cc5",
+                        "on-secondary-container": "#500050",
+                        "surface-variant": "#2e3637",
+                        "surface-tint": "#00dbe7",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#002e6a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "gutter": "12px",
+                        "margin-desktop": "32px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Sora", "sans-serif"],
+                        "body-sm": ["Space Grotesk", "sans-serif"],
+                        "hud-label": ["JetBrains Mono", "monospace"],
+                        "button-text": ["Sora", "sans-serif"],
+                        "display-lg-mobile": ["Sora", "sans-serif"],
+                        "headline-md": ["Sora", "sans-serif"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "hud-label": ["14px", { lineHeight: "20px", letterSpacing: "0.1em", fontWeight: "500" }],
+                        "button-text": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+                        "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            overflow: hidden; /* Lock viewport for gameplay */
+        }
+        
+        /* Particle Canvas */
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Synthwave Grid Background */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(theme('colors.primary-container') 1px, transparent 1px),
+                linear-gradient(90deg, theme('colors.primary-container') 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center bottom;
+            transform: perspective(500px) rotateX(60deg) translateY(100px) scale(2);
+            opacity: 0.15;
+            z-index: -1;
+            animation: moveGrid 2s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            from { background-position: center bottom; }
+            to { background-position: center bottom 40px; }
+        }
+
+        /* Glowing Rails */
+        .rail {
+            width: 4px;
+            background-color: theme('colors.primary-container');
+            box-shadow: 0 0 10px theme('colors.primary-container');
+            height: 150vh;
+            position: absolute;
+            bottom: -20vh;
+            transform-origin: bottom center;
+            animation: railPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes railPulse {
+            from { box-shadow: 0 0 5px theme('colors.primary-container'); opacity: 0.8; }
+            to { box-shadow: 0 0 20px theme('colors.primary-container'), 0 0 40px theme('colors.primary-container'); opacity: 1; }
+        }
+
+        .rail-left {
+            left: 30%;
+            transform: perspective(800px) rotateX(45deg) rotateY(10deg);
+        }
+
+        .rail-right {
+            right: 30%;
+            transform: perspective(800px) rotateX(45deg) rotateY(-10deg);
+        }
+
+        /* Pulse Marker */
+        .pulse-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: theme('colors.secondary-container');
+            box-shadow: 0 0 20px theme('colors.secondary-container');
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            transition: left 0.1s ease-out;
+        }
+
+        /* Glass HUD */
+        .glass-hud {
+            background: rgba(21, 29, 30, 0.4);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: theme('colors.primary-container');
+            color: theme('colors.on-primary-container');
+            font-family: theme('fontFamily.button-text');
+            font-size: theme('fontSize.button-text')[0];
+            font-weight: theme('fontSize.button-text')[1].fontWeight;
+            line-height: theme('fontSize.button-text')[1].lineHeight;
+            padding: theme('spacing.sm') theme('spacing.md');
+            border-radius: theme('borderRadius.DEFAULT');
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .btn-primary:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px theme('colors.primary-container'), 0 0 40px theme('colors.primary-container');
+        }
+
+        /* Start Overlay */
+        .start-overlay {
+            background: rgba(13, 21, 21, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Glitch Effect */
+        .glitch-text {
+            animation: glitch 3s infinite alternate;
+        }
+        
+        @keyframes glitch {
+            0% {
+                text-shadow: 0 0 20px rgba(0,242,255,0.6);
+            }
+            10% {
+                text-shadow: -2px 0 #fe00fe, 2px 0 #00f2ff, 0 0 20px rgba(0,242,255,0.6);
+            }
+            11% {
+                text-shadow: 2px 0 #fe00fe, -2px 0 #00f2ff, 0 0 20px rgba(0,242,255,0.6);
+            }
+            12% {
+                text-shadow: 0 0 20px rgba(0,242,255,0.6);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(0,242,255,0.6);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .grid-bg,
+            .rail,
+            .glitch-text,
+            #particleCanvas {
+                animation: none !important;
+                display: none !important;
+            }
+            .grid-bg {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="relative w-full h-screen">
+<!-- Particle Canvas -->
+<canvas id="particleCanvas"></canvas>
+<!-- Ambient Grid Background -->
+<div class="grid-bg"></div>
+<!-- TopAppBar (Shared Component styling logic applied) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 glass-hud shadow-[0_0_15px_rgba(0,242,255,0.3)] border-b border-white/10">
+<div class="font-display-lg-mobile text-display-lg-mobile italic tracking-tighter text-primary-container drop-shadow-[0_0_10px_rgba(0,242,255,0.8)]">
+            RAILFLIP LITE
+        </div>
+<div class="flex items-center gap-4">
+<!-- HUD Stats -->
+<div class="flex gap-4 mr-4 font-hud-label text-hud-label text-on-surface-variant">
+<div class="flex flex-col items-end">
+<span class="text-xs text-primary-container opacity-80 uppercase tracking-widest">Score</span>
+<span class="text-secondary-fixed font-bold tracking-wider">12,450</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-xs text-primary-container opacity-80 uppercase tracking-widest">Level</span>
+<span class="text-secondary-fixed font-bold tracking-wider">4</span>
+</div>
+</div>
+<!-- Trailing Icons -->
+<div class="flex gap-2 text-primary-container">
+<button aria-label="Pause Game" class="p-2 hover:scale-110 hover:drop-shadow-[0_0_12px_#00f2ff] transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">pause</span>
+</button>
+<button aria-label="Restart Game" class="p-2 hover:scale-110 hover:drop-shadow-[0_0_12px_#00f2ff] transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button aria-label="Settings" class="p-2 hover:scale-110 hover:drop-shadow-[0_0_12px_#00f2ff] transition-all active:scale-95 duration-200 hidden md:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Gameplay Area -->
+<main class="relative w-full h-full overflow-hidden flex justify-center items-center">
+<!-- The Rails -->
+<div class="absolute w-full h-full pointer-events-none">
+<div class="rail rail-left"></div>
+<div class="rail rail-right"></div>
+</div>
+<!-- The Player (Pulse Marker) -->
+<!-- Starts on left rail conceptually -->
+<div class="pulse-marker" style="left: calc(30% - 10px);"></div>
+<!-- Concept: Moving Collectibles/Blockers would be injected here via JS -->
+<div class="absolute w-4 h-4 rounded-full bg-primary-fixed shadow-[0_0_15px_#74f5ff] top-1/4 left-[35%] opacity-80 pointer-events-none"></div>
+<div class="absolute w-4 h-4 rounded-sm bg-error shadow-[0_0_15px_#ffb4ab] top-1/2 right-[35%] opacity-80 pointer-events-none"></div>
+</main>
+<!-- Start/Game Over Overlay (Hidden initially for "gameplay" state, shown here for visual reference as requested in prompt) -->
+<!-- Using a hidden class, but for the prompt's requirement "A 'START GAME' button is positioned centrally", we will display it as an overlay -->
+<div class="absolute inset-0 z-40 flex flex-col items-center justify-center start-overlay" id="startOverlay">
+<h2 class="font-display-lg text-display-lg text-primary-container mb-8 text-center italic glitch-text">
+            READY TO FLIP?
+        </h2>
+<button class="btn-primary uppercase tracking-widest px-8 py-4 shadow-[0_0_20px_rgba(0,242,255,0.4)]" id="btnStartGame">
+            START GAME
+        </button>
+</div>
+<!-- BottomNavBar (Hidden on Web, suppressed here as Gameplay is focused, but included per JSON if needed. Suppressing as per "Semantic Shell Mandate - Automatic Suppression if Task-Focused/Linear") -->
+<!-- Navigation shell excluded to prioritize the gameplay canvas. -->
+<script>
+        // Simple Interaction Logic for the prompt's START button
+        document.getElementById('btnStartGame').addEventListener('click', function() {
+            document.getElementById('startOverlay').style.display = 'none';
+        });
+
+        // Simple interaction for PAUSE
+        document.querySelector('[aria-label="Pause Game"]').addEventListener('click', function() {
+            const overlay = document.getElementById('startOverlay');
+            if(overlay.style.display === 'none' || overlay.style.display === '') {
+                overlay.style.display = 'flex';
+                overlay.querySelector('h2').innerText = 'PAUSED';
+                overlay.querySelector('button').innerText = 'RESUME';
+            } else {
+                overlay.style.display = 'none';
+            }
+        });
+        
+        // Particle System
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = canvas.height + Math.random() * 100;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedY = Math.random() * -2 - 1;
+                    this.speedX = Math.random() * 2 - 1;
+                    this.color = Math.random() > 0.5 ? '#00f2ff' : '#fe00fe';
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+
+                update() {
+                    this.y += this.speedY;
+                    this.x += this.speedX;
+                    if (this.y < -10) {
+                        this.y = canvas.height + 10;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = this.color;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                    ctx.globalAlpha = 1;
+                }
+            }
+
+            function initParticles() {
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        }
+    </script>
+</body></html>
