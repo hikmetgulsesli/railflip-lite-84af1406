@@ -1,0 +1,288 @@
+[
+  {
+    "screenId": "38cad7238b4d488abc7cc28894cf882c",
+    "screenTitle": "Gameplay - RailFlip Lite (Animated)",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Pause Game",
+        "line": 297
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 300
+      },
+      {
+        "type": "button",
+        "label": "Settings",
+        "line": 303
+      },
+      {
+        "type": "button",
+        "label": "START GAME",
+        "line": 329
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Pause Game",
+        "line": 297
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 300
+      },
+      {
+        "type": "button",
+        "label": "Settings",
+        "line": 303
+      },
+      {
+        "type": "button",
+        "label": "START GAME",
+        "line": 329
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "34c86019d36b450f9361b1dbcd3854aa",
+    "screenTitle": "Gameplay - RailFlip Lite",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Pause Game",
+        "line": 221
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "Settings",
+        "line": 227
+      },
+      {
+        "type": "button",
+        "label": "START GAME",
+        "line": 253
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Pause Game",
+        "line": 221
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "Settings",
+        "line": 227
+      },
+      {
+        "type": "button",
+        "label": "START GAME",
+        "line": 253
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "a65ab28e628a4feca7e27f7616cd72b0",
+    "screenTitle": "Game Settings - RailFlip Lite",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "EASY",
+        "line": 170
+      },
+      {
+        "type": "button",
+        "label": "MEDIUM",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "HARD",
+        "line": 176
+      },
+      {
+        "type": "button",
+        "label": "SAVE PREFERENCES",
+        "line": 211
+      },
+      {
+        "type": "button",
+        "label": "BACK TO GAME",
+        "line": 217
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 221
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 193
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "EASY",
+        "line": 170
+      },
+      {
+        "type": "button",
+        "label": "MEDIUM",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "HARD",
+        "line": 176
+      },
+      {
+        "type": "button",
+        "label": "SAVE PREFERENCES",
+        "line": 211
+      },
+      {
+        "type": "button",
+        "label": "BACK TO GAME",
+        "line": 217
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 221
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 193
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 7,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b853844ca1cd4ec293c7556c36edf4f0",
+    "screenTitle": "Game Settings - RailFlip Lite (Enhanced)",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "EASY",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "MEDIUM",
+        "line": 186
+      },
+      {
+        "type": "button",
+        "label": "HARD",
+        "line": 189
+      },
+      {
+        "type": "button",
+        "label": "SAVE PREFERENCES",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "BACK TO GAME",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 234
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 206
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "EASY",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "MEDIUM",
+        "line": 186
+      },
+      {
+        "type": "button",
+        "label": "HARD",
+        "line": 189
+      },
+      {
+        "type": "button",
+        "label": "SAVE PREFERENCES",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "BACK TO GAME",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 234
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 206
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 7,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
