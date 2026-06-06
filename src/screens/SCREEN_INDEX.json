@@ -1,0 +1,166 @@
+[
+  {
+    "screenId": "38cad7238b4d488abc7cc28894cf882c",
+    "title": "Gameplay - RailFlip Lite (Animated)",
+    "componentName": "GameplayRailflipLiteAnimated",
+    "file": "src/screens/GameplayRailflipLiteAnimated.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "pause-game-1",
+        "kind": "button",
+        "label": "Pause Game",
+        "index": 0
+      },
+      {
+        "id": "restart-game-2",
+        "kind": "button",
+        "label": "Restart Game",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "button",
+        "label": "Settings",
+        "index": 2
+      },
+      {
+        "id": "start-game-4",
+        "kind": "button",
+        "label": "START GAME",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "34c86019d36b450f9361b1dbcd3854aa",
+    "title": "Gameplay - RailFlip Lite",
+    "componentName": "GameplayRailflipLite",
+    "file": "src/screens/GameplayRailflipLite.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "pause-game-1",
+        "kind": "button",
+        "label": "Pause Game",
+        "index": 0
+      },
+      {
+        "id": "restart-game-2",
+        "kind": "button",
+        "label": "Restart Game",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "button",
+        "label": "Settings",
+        "index": 2
+      },
+      {
+        "id": "start-game-4",
+        "kind": "button",
+        "label": "START GAME",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "a65ab28e628a4feca7e27f7616cd72b0",
+    "title": "Game Settings - RailFlip Lite",
+    "componentName": "GameSettingsRailflipLite",
+    "file": "src/screens/GameSettingsRailflipLite.tsx",
+    "buttons": 6,
+    "inputs": 1,
+    "links": 0,
+    "actions": [
+      {
+        "id": "easy-1",
+        "kind": "button",
+        "label": "EASY",
+        "index": 0
+      },
+      {
+        "id": "medium-2",
+        "kind": "button",
+        "label": "MEDIUM",
+        "index": 1
+      },
+      {
+        "id": "hard-3",
+        "kind": "button",
+        "label": "HARD",
+        "index": 2
+      },
+      {
+        "id": "save-preferences-4",
+        "kind": "button",
+        "label": "SAVE PREFERENCES",
+        "index": 3
+      },
+      {
+        "id": "back-to-game-5",
+        "kind": "button",
+        "label": "BACK TO GAME",
+        "index": 4
+      },
+      {
+        "id": "reset-to-defaults-6",
+        "kind": "button",
+        "label": "Reset to Defaults",
+        "index": 5
+      }
+    ]
+  },
+  {
+    "screenId": "b853844ca1cd4ec293c7556c36edf4f0",
+    "title": "Game Settings - RailFlip Lite (Enhanced)",
+    "componentName": "GameSettingsRailflipLiteEnhanced",
+    "file": "src/screens/GameSettingsRailflipLiteEnhanced.tsx",
+    "buttons": 6,
+    "inputs": 1,
+    "links": 0,
+    "actions": [
+      {
+        "id": "easy-1",
+        "kind": "button",
+        "label": "EASY",
+        "index": 0
+      },
+      {
+        "id": "medium-2",
+        "kind": "button",
+        "label": "MEDIUM",
+        "index": 1
+      },
+      {
+        "id": "hard-3",
+        "kind": "button",
+        "label": "HARD",
+        "index": 2
+      },
+      {
+        "id": "save-preferences-4",
+        "kind": "button",
+        "label": "SAVE PREFERENCES",
+        "index": 3
+      },
+      {
+        "id": "back-to-game-5",
+        "kind": "button",
+        "label": "BACK TO GAME",
+        "index": 4
+      },
+      {
+        "id": "reset-to-defaults-6",
+        "kind": "button",
+        "label": "Reset to Defaults",
+        "index": 5
+      }
+    ]
+  }
+]
