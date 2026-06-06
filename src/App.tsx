@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import {
+  GameplayRailflipLite,
   GameplayRailflipLiteAnimated,
   GameSettingsRailflipLiteEnhanced,
 } from './screens';
 import { useGameStore, gameActions, dispatchSetDifficulty } from './features/railflip-lite/railflip-lite.store';
 import { loadPreferences, savePreferences } from './features/railflip-lite/railflip-lite.repo';
+import { actStartGame } from './features/surf-gameplay/act_start_game';
+import { actPauseGame } from './features/surf-gameplay/act_pause_game';
+import { actRestartGame } from './features/surf-gameplay/act_restart_game';
 import { exposeAppBridge } from './test/bridge';
 
-type Screen = 'gameplay' | 'settings';
+type Screen = 'gameplay' | 'gameplay-animated' | 'settings';
 
 export default function App() {
   const state = useGameStore();
@@ -38,16 +42,34 @@ export default function App() {
     dispatchSetDifficulty(prefs.difficulty);
   }, []);
 
+  // Keyboard shortcuts: pause game and screen switching
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'p' || e.key === 'P' || e.code === 'Space') {
+        e.preventDefault();
+        actPauseGame();
+      }
+      if (e.key === '1') {
+        setScreen('gameplay');
+      }
+      if (e.key === '2') {
+        setScreen('gameplay-animated');
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   const handleStart = useCallback(() => {
-    gameActions.start();
+    actStartGame();
   }, []);
 
   const handlePause = useCallback(() => {
-    gameActions.pause();
+    actPauseGame();
   }, []);
 
   const handleRestart = useCallback(() => {
-    gameActions.restart();
+    actRestartGame();
   }, []);
 
   const handleSettings = useCallback(() => {
@@ -107,6 +129,12 @@ export default function App() {
       className="relative min-h-screen w-full overflow-hidden bg-slate-50 text-slate-950"
     >
       {screen === 'gameplay' && (
+        <GameplayRailflipLite
+          actions={gameplayActions}
+          runtime={runtimeSnapshot}
+        />
+      )}
+      {screen === 'gameplay-animated' && (
         <GameplayRailflipLiteAnimated
           actions={gameplayActions}
           runtime={runtimeSnapshot}
